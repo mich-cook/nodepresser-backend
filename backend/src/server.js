@@ -6,13 +6,15 @@ import path from 'path';
 
 dotenv.config();
 const app = express();
+const port = process.env.PORT || 8000;
 
 app.use(express.static(path.join(__dirname, '/build')));
 app.use(bodyParser.json());
 
 const withDB = async (operations, res) => {
   try {
-    const client = await MongoClient.connect('mongodb://localhost:27017', { "useNewUrlParser": true });
+
+    const client = await MongoClient.connect(process.env.MONGO_URI, { "useNewUrlParser": true, "useUnifiedTopology": true });
     const db = client.db('fallen-tree');
 
     await operations(db);
@@ -77,4 +79,4 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/build/index.html'));
 });
 
-app.listen(8000, () => console.log('Listening on port 8000...'));
+app.listen(port, () => console.log(`Listening on port ${port}...`));
