@@ -64,29 +64,9 @@ app.post('/api/articles/:name/add-comment', async (req, res) => {
     res.status(200).json(updatedArticleInfo);
   
   }, res);
-/*
-  try {
-
-    res.status(200).json(articleInfo);
-
-    client.close();
-  } catch(e) {
-    res.status(500).json({ "message": "Error connecting to db", e});
-  }
-
-//  articlesInfo[articleName].comments.push({ username, text });
-
-//  res.status(200).send(articlesInfo[articleName]);
-*/
 });
 
 
-
-app.get('/hello', (req, res) => res.send('I hear you - five by five.'));
-/*
-app.get('/hello/:name', (req, res) => res.send(`Hello ${req.params.name}`));
-app.post('/hello', (req, res) => res.send(`Hello ${req.body.name}`));
-*/
 // until we have npx installed, this is how you start it:
 // # nodejs node_modules/@babel/node/bin/babel-node.js src/server.js
 
