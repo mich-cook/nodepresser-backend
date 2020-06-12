@@ -4,7 +4,7 @@ export default function(app, collection) {
 
   const withDB = async (operations, res) => {
     try {
-      const client = await MongoClient.connect(process.env.MONGO_URI, { "useNewUrlParser": true }); // , "useUnifiedTopology": true });
+      const client = await MongoClient.connect(process.env.MONGO_URI, { "useNewUrlParser": true, "useUnifiedTopology": true });
       const db = client.db('fallen-tree');
 
       await operations(db);
