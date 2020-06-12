@@ -1,6 +1,10 @@
 import { MongoClient } from 'mongodb';
 
-export default function(app, collection) {
+import readRoutes from './readAPIs.js';
+import userRoutes from './userAPIs.js';
+import authorRoutes from './authorAPIs.js';
+
+export default function(app) {
 
   const withDB = async (operations, res) => {
     try {
@@ -15,50 +19,9 @@ export default function(app, collection) {
     }
   };
 
-  app.get('/api/articles/:name', async (req, res) => {
-    withDB(async (db) => {
-      const articleName = req.params.name;
-
-      const articleInfo = await db.collection('articles').findOne({ "name": articleName });
-      res.status(200).json(articleInfo);
-    }, res);
-  });
-
-  app.post('/api/articles/:name/upvote', async (req, res) => {
-    withDB(async (db) => {
-      const articleName = req.params.name;
-
-      const articleInfo = await db.collection('articles').findOne({ "name": articleName });
-      await db.collection('articles').updateOne({ "name": articleName }, {
-        '$set': {
-          "upvotes": articleInfo.upvotes + 1
-        }
-      });
-
-      const updatedArticleInfo = await db.collection('articles').findOne({ "name": articleName });
-
-      res.status(200).json(updatedArticleInfo);
-    }, res);
-  });
-
-  app.post('/api/articles/:name/add-comment', async (req, res) => {
-    withDB(async (db) => {
-      const articleName = req.params.name;
-      const { username, text} = req.body;
-
-      const articleInfo = await db.collection('articles').findOne({ "name": articleName });
-      await db.collection('articles').updateOne({ "name": articleName }, {
-        '$set': {
-          "comments": articleInfo.comments.concat({ username, text })
-        }
-      });
-
-      const updatedArticleInfo = await db.collection('articles').findOne({ "name": articleName });
-
-      res.status(200).json(updatedArticleInfo);
-
-    }, res);
-  });
+  readRoutes(app, withDB);
+  userRoutes(app, withDB);
+  authorRoutes(app, withDB);
 
   // send everything that didn't match above to index.html
   app.get('*', (req, res) => {
