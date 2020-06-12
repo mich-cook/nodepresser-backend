@@ -1,8 +1,9 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
-import { MongoClient } from 'mongodb';
 import path from 'path';
+
+import routes from './routes/api.js';
 
 dotenv.config();
 const app = express();
@@ -11,72 +12,9 @@ const port = process.env.PORT || 8000;
 app.use(express.static(path.join(__dirname, '/build')));
 app.use(bodyParser.json());
 
-const withDB = async (operations, res) => {
-  try {
-
-    const client = await MongoClient.connect(process.env.MONGO_URI, { "useNewUrlParser": true, "useUnifiedTopology": true });
-    const db = client.db('fallen-tree');
-
-    await operations(db);
-
-    client.close();
-  } catch(e) {
-    res.status(500).json({ "message": "Error connecting to db", e});
-  }
-};
-
-app.get('/api/articles/:name', async (req, res) => {
-  withDB(async (db) => {
-    const articleName = req.params.name;
-
-    const articleInfo = await db.collection('articles').findOne({ "name": articleName });
-    res.status(200).json(articleInfo);
-  }, res);
-});
-
-app.post('/api/articles/:name/upvote', async (req, res) => {
-  withDB(async (db) => {
-    const articleName = req.params.name;
-
-    const articleInfo = await db.collection('articles').findOne({ "name": articleName });
-    await db.collection('articles').updateOne({ "name": articleName }, {
-      '$set': {
-        "upvotes": articleInfo.upvotes + 1
-      }
-    });
-
-    const updatedArticleInfo = await db.collection('articles').findOne({ "name": articleName });
-
-    res.status(200).json(updatedArticleInfo);
-  }, res);
-});
-
-app.post('/api/articles/:name/add-comment', async (req, res) => {
-  withDB(async (db) => {
-    const articleName = req.params.name;
-    const { username, text} = req.body;
-
-    const articleInfo = await db.collection('articles').findOne({ "name": articleName });
-    await db.collection('articles').updateOne({ "name": articleName }, {
-      '$set': {
-        "comments": articleInfo.comments.concat({ username, text })
-      }
-    });
-
-    const updatedArticleInfo = await db.collection('articles').findOne({ "name": articleName });
-
-    res.status(200).json(updatedArticleInfo);
-  
-  }, res);
-});
-
+routes(app);
 
 // until we have npx installed, this is how you start it:
 // # nodejs node_modules/@babel/node/bin/babel-node.js src/server.js
-
-// send everything that didn't match above to index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/build/index.html'));
-});
 
 app.listen(port, () => console.log(`Listening on port ${port}...`));
