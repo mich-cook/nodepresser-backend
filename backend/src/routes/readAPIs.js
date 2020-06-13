@@ -31,7 +31,7 @@ export default function(app, withDB) {
   });
 */
 
-  app.get('/api/articles/:author/:slug', async (req, res) => {
+  app.get('/api/article/:author/:slug', async (req, res) => {
     const author = req.params.author;
     const slug = req.params.slug;
 
