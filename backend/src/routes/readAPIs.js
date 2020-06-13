@@ -5,7 +5,11 @@ export default function(app, withDB) {
       const articleName = req.params.name;
 
       const articleInfo = await db.collection('articles').findOne({ "name": articleName });
-      res.status(200).json(articleInfo);
+      if (articleInfo !== null) {
+        res.status(200).json(articleInfo);
+      } else {
+        res.status(404).json({ "status": "fail", "message": "article not found", "name": articleName });
+      }
     }, res);
   });
 
