@@ -18,15 +18,6 @@ import NavBar from './NavBar';
 
 // styles
 import './App.css';
-/*
-function App() {
-  return (
-    <div className="App">
-      <HomePage />
-    </div>
-  );
-}
-*/
 
 // Router display is matches url path
 // no path matches by default
@@ -42,8 +33,13 @@ class App extends Component {
             <Switch>
               <Route path="/" component={HomePage} exact />
               <Route path="/about" component={AboutPage} />
+
+              <Route path="/article/:author/:slug" component={ArticlePage} />
+
+              <Route path="/articles/:author" component={ArticlesListPage} />
+              <Route path="/articles/recent" component={ArticlesListPage} />
+
               <Route path="/articles-list" component={ArticlesListPage} />
-              <Route path="/article/:name" component={ArticlePage} />
               <Route component={NotFoundPage} />
             </Switch>
           </div>
