@@ -13,4 +13,18 @@ export default function(app, withDB) {
     }, res);
   });
 
+  app.get('/api/articles/:author/:slug', async (req, res) => {
+    const author = req.params.author;
+    const slug = req.params.slug;
+
+    withDB(async (db) => {
+      const article = await db.collection('articles').findOne({ author, slug });  // this SHOULD be unique
+      if (article !== null) {
+        res.status(200).json(article);
+      } else {
+        res.status(404).json({ "status": "fail", "message": "article not found", "name": article });
+      }
+    }, res);
+  });
+
 };
