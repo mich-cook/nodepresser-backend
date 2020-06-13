@@ -1,5 +1,22 @@
 export default function(app, withDB) {
 
+  app.get('/api/articles/:author', async (req, res) => {
+    const author = req.params.author;
+
+    withDB(async (db) => {
+      const articles = await db.collection('articles').find({ author }).toArray();
+
+      if (articles !== null) {
+        res.status(200).json(articles);
+      } else {
+        res.status(404).json({ "status": "fail", "message": "article not found", "author": author });
+      }
+    }, res);
+  });
+
+// decide what other ways we want to make an article or articles available via the API
+// design the API to support those
+/*
   app.get('/api/articles/:slug', async (req, res) => {
     withDB(async (db) => {
       const articleName = req.params.name;
@@ -12,6 +29,7 @@ export default function(app, withDB) {
       }
     }, res);
   });
+*/
 
   app.get('/api/articles/:author/:slug', async (req, res) => {
     const author = req.params.author;
