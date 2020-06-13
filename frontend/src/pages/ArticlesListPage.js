@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import ArticlesList from '../components/ArticlesList';
 
 class ArticlesListPage extends Component {
-  constructor() {
+  constructor({ match }) {
     super();
-    this.author = 'TestUser';  // not how we'll keep doing this, but sets it for now
+    this.author = match.params.author;
     this.state = {
       articles: []
     };
