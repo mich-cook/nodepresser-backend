@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
+import cors from 'cors';
 
 import routes from './routes/api.js';
 
@@ -9,6 +10,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 8000;
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, '/build')));
 
 routes(app);
