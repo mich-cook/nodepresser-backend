@@ -1,6 +1,6 @@
 export default function(app, withDB) {
 
-  app.get('/api/articles/:name', async (req, res) => {
+  app.get('/api/articles/:slug', async (req, res) => {
     withDB(async (db) => {
       const articleName = req.params.name;
 
