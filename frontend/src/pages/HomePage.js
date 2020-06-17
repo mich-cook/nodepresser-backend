@@ -3,10 +3,26 @@ import React from 'react';
 const HomePage = () => (
   <React.Fragment>
     <h1>Welcome to this blogging platform</h1>
-    <p>Top Authors (TODO):</p>
-    <ul></ul>
-    <p>Top Articles (TODO):</p>
-    <ul></ul>
+    <div id="top-authors">
+      <p>Top Authors (TODO):</p>
+      <ul>
+        <li>Fake Author 1</li>
+        <li>Fake Author 2</li>
+        <li>Fake Author 3</li>
+        <li>Fake Author 4</li>
+        <li>Fake Author 5</li>
+      </ul>
+    </div>
+    <div id="top-articles">
+      <p>Top Articles (TODO):</p>
+      <ul>
+        <li>Fake Article 1</li>
+        <li>Fake Article 2</li>
+        <li>Fake Article 3</li>
+        <li>Fake Article 4</li>
+        <li>Fake Article 5</li>
+      </ul>
+    </div>
   </React.Fragment>
 );
 
