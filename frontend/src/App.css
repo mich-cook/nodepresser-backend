@@ -1,22 +1,52 @@
-.App {
-  text-align: center;
+/* other color: c13100
+https://www.colorcombos.com/color-scheme-22.html
+https://www.colorcombos.com/orange-color-schemes.html
+*/
+
+body {
+  background-color: #fffbd0;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 4rem;
+  border-bottom: 2px solid #ff9900;
+  background-color: #cc6600;
+  color: #ffffff;
 }
 
-.App-link {
-  color: #09d3ac;
+nav ul.home {
+  flex: 1 0 auto;
+  justify-content: flex-start;
+  padding-left: 2rem;
+}
+
+nav ul.lilo {
+  display: flex;
+  justify-content: center;
+  padding-right: 1rem;
+}
+
+nav ul.lilo li {
+  padding: 0 0.5rem;
+}
+
+nav ul li a,
+nav ul li a:hover,
+nav ul li a:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.page-body {
+  width: 90vw;
+  margin: 0 auto;
+  padding-top: 1rem;
+}
+
+.page-body h1 {
+  font-size: 3rem;
 }
