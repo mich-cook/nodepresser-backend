@@ -44,9 +44,36 @@ nav ul li a:visited {
 .page-body {
   width: 90vw;
   margin: 0 auto;
-  padding-top: 1rem;
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "heading heading"
+    "authors articles";
 }
 
 .page-body h1 {
+  grid-area: heading;
   font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+#top-authors {
+  grid-area: authors;
+}
+
+#top-articles {
+  grid-area: articles;
+}
+
+#top-authors ul,
+#top-articles ul {
+  margin-left: 1rem;
+  padding-top: 0.5rem;
+}
+
+#top-authors ul li,
+#top-articles ul li {
+  padding: 0.5rem;
 }
