@@ -45,4 +45,16 @@ export default function(app, withDB) {
     }, res);
   });
 
+  app.get('/api/authors/top', async (req, res) => {
+    withDB(async (db) => {
+      const pipeline = [
+        { "$group": { "_id": "$author", "count": { "$sum": 1 }}},
+        { "$sort": { "count": 1, "_id": -1 }},
+        { "$limit": 5 }
+      ];
+      const authors = await db.collection('articles').aggregate(pipeline).toArray();
+      res.status(200).json({ "authors": authors });
+    }, res);
+  });
+
 };
