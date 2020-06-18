@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HomePage = () => (
-  <React.Fragment>
+  <div id="homepage" className="page-body">
     <h1>Welcome to this blogging platform</h1>
     <div id="top-authors">
       <p>Top Authors (TODO):</p>
@@ -23,7 +23,7 @@ const HomePage = () => (
         <li>Fake Article 5</li>
       </ul>
     </div>
-  </React.Fragment>
+  </div>
 );
 
 export default HomePage;

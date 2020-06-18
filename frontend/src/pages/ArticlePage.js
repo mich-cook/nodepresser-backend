@@ -30,11 +30,11 @@ const ArticlePage = ({ match }) => {
 //  const otherArticles = articleContent.filter(article => article.name !== name);
 
   return(
-  <React.Fragment>
+  <div id="single-article" className="page-body">
     <h1>{article.title}</h1>
     <p>by {article.author}</p>
     <p>{article.content}</p>
-  </React.Fragment>
+  </div>
 );}
 
 /*

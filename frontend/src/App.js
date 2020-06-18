@@ -29,20 +29,18 @@ class App extends Component {
       <Router>
         <div className="App">
           <NavBar />
-          <div className="page-body">
-            <Switch>
-              <Route path="/" component={HomePage} exact />
-              <Route path="/about" component={AboutPage} />
+          <Switch>
+            <Route path="/" component={HomePage} exact />
+            <Route path="/about" component={AboutPage} />
 
-              <Route path="/article/:author/:slug" component={ArticlePage} />
+            <Route path="/article/:author/:slug" component={ArticlePage} />
 
-              <Route path="/articles/:author" component={ArticlesListPage} />
-              <Route path="/articles/recent" component={ArticlesListPage} />
+            <Route path="/articles/:author" component={ArticlesListPage} />
+            <Route path="/articles/recent" component={ArticlesListPage} />
 
-              <Route path="/articles-list" component={ArticlesListPage} />
-              <Route component={NotFoundPage} />
-            </Switch>
-          </div>
+            <Route path="/articles-list" component={ArticlesListPage} />
+            <Route component={NotFoundPage} />
+          </Switch>
         </div>
       </Router>
     );
