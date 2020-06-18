@@ -48,6 +48,7 @@ export default function(app, withDB) {
   app.get('/api/authors/top', async (req, res) => {
     withDB(async (db) => {
       const pipeline = [
+        { "$match": { "deleted": false }},
         { "$group": { "_id": "$author", "count": { "$sum": 1 }}},
         { "$sort": { "count": 1, "_id": -1 }},
         { "$limit": 5 }
