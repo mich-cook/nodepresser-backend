@@ -50,7 +50,7 @@ export default function(app, withDB) {
       const pipeline = [
         { "$match": { "deleted": false }},
         { "$group": { "_id": "$author", "count": { "$sum": 1 }}},
-        { "$sort": { "count": 1, "_id": -1 }},
+        { "$sort": { "count": -1, "_id": -1 }},
         { "$limit": 5 }
       ];
       const authors = await db.collection('articles').aggregate(pipeline).toArray();
