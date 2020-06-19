@@ -18,13 +18,13 @@ return (
   <div id="homepage" className="page-body">
     <h1>Welcome to this blogging platform</h1>
     <div id="top-authors">
-      <p>Top Authors:</p>
+      <h2>Top Authors:</h2>
       <ul>
       {authors.authors.map((author, key) => ( <li key={key}><Link to={`/articles/${author._id}`}>{author._id} ({author.count})</Link></li>))}
       </ul>
     </div>
     <div id="top-articles">
-      <p>Top Articles (TODO):</p>
+      <h2>Top Articles (TODO):</h2>
       <ul>
         <li>Fake Article 1</li>
         <li>Fake Article 2</li>
