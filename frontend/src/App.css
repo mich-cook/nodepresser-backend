@@ -34,6 +34,23 @@ nav ul.lilo li {
   padding: 0 0.5rem;
 }
 
+nav ul.lilo li.siso {
+  align-self: center;
+  padding-right: 2rem;
+}
+
+nav ul.lilo li.register {
+  background-color: #ffffff;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 4px #ff9900;
+}
+
+nav ul.lilo li.register a {
+  color: #cc6600;
+  font-weight: bold;
+}
+
 nav ul li a,
 nav ul li a:hover,
 nav ul li a:visited {
