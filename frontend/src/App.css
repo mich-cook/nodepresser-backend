@@ -52,6 +52,10 @@ nav ul li a:visited {
   margin-bottom: 2rem;
 }
 
+.page-body h2 {
+  font-weight: bold;
+}
+
 .page-body a,
 .page-body a:hover,
 .page-body a:visited {
