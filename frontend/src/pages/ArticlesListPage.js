@@ -22,12 +22,12 @@ class ArticlesListPage extends Component {
   // TODO: Better handling of author that doesn't exist or doesn't have articles
   render() {
     return (
-<React.Fragment>
+<div id="article-list" className="page-body">
   <h1>Articles by {this.author}</h1>
   <ul>
     <ArticlesList articles={this.state.articles} />
   </ul>
-</React.Fragment>
+</div>
     );
   }
 };
