@@ -47,6 +47,11 @@ nav ul li a:visited {
   padding-top: 2rem;
 }
 
+.page-body h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
 #homepage {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -58,8 +63,6 @@ nav ul li a:visited {
 
 #homepage h1 {
   grid-area: heading;
-  font-size: 3rem;
-  margin-bottom: 2rem;
 }
 
 #top-authors {
