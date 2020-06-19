@@ -52,6 +52,12 @@ nav ul li a:visited {
   margin-bottom: 2rem;
 }
 
+.page-body a,
+.page-body a:hover,
+.page-body a:visited {
+  color: #cc6600;
+}
+
 #homepage {
   display: grid;
   grid-template-columns: 50% 50%;
