@@ -3,13 +3,19 @@ import { Link } from 'react-router-dom';
 
 const HomePage = () => {
 
-  const [ authors, setAuthors ] = useState({ "authors": [] });
+  const [ topAuthors, setTopAuthors ] = useState({ "authors": [] });
+  const [ topArticles, setTopArticles ] = useState({ "articles": [] });
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch(`//localhost:8000/api/authors/top`);
-      const body = await result.json();
-      setAuthors(body);
+      const topAuthorsResponse = await fetch(`//localhost:8000/api/authors/top`);
+      const topAuthors = await topAuthorsResponse.json();
+
+      const topArticlesResponse = await fetch(`//localhost:8000/api/articles/top`);
+      const topArticles = await topArticlesResponse.json();
+
+      setTopAuthors(topAuthors);
+      setTopArticles(topArticles);
     };
     fetchData();
   }, []);
@@ -20,17 +26,13 @@ return (
     <div id="top-authors">
       <h2>Top Authors:</h2>
       <ul>
-      {authors.authors.map((author, key) => ( <li key={key}><Link to={`/articles/${author._id}`}>{author._id} ({author.count})</Link></li>))}
+      {topAuthors.authors.map((author, key) => ( <li key={key}><Link to={`/articles/${author._id}`}>{author._id} ({author.count})</Link></li>))}
       </ul>
     </div>
     <div id="top-articles">
       <h2>Top Articles (TODO):</h2>
       <ul>
-        <li>Fake Article 1</li>
-        <li>Fake Article 2</li>
-        <li>Fake Article 3</li>
-        <li>Fake Article 4</li>
-        <li>Fake Article 5</li>
+      {topArticles.articles.map((article, key) => ( <li key={key}><Link to={`/articles/${article.author}/${article.slug}`}>{article.title}</Link></li>))}
       </ul>
     </div>
   </div>
