@@ -27,23 +27,6 @@ export default function(app, withDB) {
     }, res);
   });
 
-// decide what other ways we want to make an article or articles available via the API
-// design the API to support those
-/*
-  app.get('/api/articles/:slug', async (req, res) => {
-    withDB(async (db) => {
-      const articleName = req.params.name;
-
-      const articleInfo = await db.collection('articles').findOne({ "name": articleName });
-      if (articleInfo !== null) {
-        res.status(200).json(articleInfo);
-      } else {
-        res.status(404).json({ "status": "fail", "message": "article not found", "name": articleName });
-      }
-    }, res);
-  });
-*/
-
   app.get('/api/article/:author/:slug', async (req, res) => {
     const author = req.params.author;
     const slug = req.params.slug;
