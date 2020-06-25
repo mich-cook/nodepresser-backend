@@ -1,5 +1,18 @@
 export default function(app, withDB) {
 
+  // has to be before /api/articles/:author so it doesn't try to match "top" as an author
+  app.get('/api/articles/top', async (req, res) => {
+    withDB(async (db) => {
+      const pipeline = [
+        { "$match": { "deleted": false }},
+        { "$sort": { "edit": -1, "_id": -1 }},
+        { "$limit": 5 }
+      ];
+      const articles = await db.collection('articles').aggregate(pipeline).toArray();
+      res.status(200).json({ "articles": articles });
+    }, res);
+  });
+
   app.get('/api/articles/:author', async (req, res) => {
     const author = req.params.author;
 
