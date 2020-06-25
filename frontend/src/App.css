@@ -115,3 +115,21 @@ nav ul li a:visited {
   padding-bottom: 1rem;
   line-height: 1.25;
 }
+
+#article-editor label {
+  display: block;
+}
+
+#article-title {
+  width: 50vw;
+  font-size: 1.25rem;
+  line-height: 2;
+  margin-bottom: 0.5rem;
+}
+
+#article-editor textarea {
+  font-size: 1rem;
+  min-height: 500px;
+  height: 75vh;
+  width: 80vw;
+}

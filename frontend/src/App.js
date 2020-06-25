@@ -11,6 +11,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ArticlePage from './pages/ArticlePage';
 import ArticlesListPage from './pages/ArticlesListPage';
+import ArticleEditorPage from './pages/ArticleEditorPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 // components
@@ -38,7 +39,7 @@ class App extends Component {
             <Route path="/articles/:author" component={ArticlesListPage} />
             <Route path="/articles/recent" component={ArticlesListPage} />
 
-            <Route path="/articles-list" component={ArticlesListPage} />
+            <Route path="/editor" component={ArticleEditorPage} />
             <Route component={NotFoundPage} />
           </Switch>
         </div>
@@ -46,5 +47,13 @@ class App extends Component {
     );
   }
 }
+
+// future planned components
+// <Route path="/profile" component={} />
+// <Route path="/login" component={} />
+// <Route path="/logout" component={} />
+
+// old paths that can probably die soon
+// <Route path="/articles-list" component={ArticlesListPage} />
 
 export default App;
