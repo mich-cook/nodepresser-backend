@@ -32,7 +32,7 @@ return (
     <div id="top-articles">
       <h2>Top Articles (TODO):</h2>
       <ul>
-      {topArticles.articles.map((article, key) => ( <li key={key}><Link to={`/articles/${article.author}/${article.slug}`}>{article.title}</Link></li>))}
+      {topArticles.articles.map((article, key) => ( <li key={key}><Link to={`/article/${article.author}/${article.slug}`}>{article.title}</Link></li>))}
       </ul>
     </div>
   </div>
