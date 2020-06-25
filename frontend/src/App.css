@@ -110,3 +110,8 @@ nav ul li a:visited {
 #top-articles ul li {
   padding: 0.5rem;
 }
+
+#article-list ul li {
+  padding-bottom: 1rem;
+  line-height: 1.25;
+}
