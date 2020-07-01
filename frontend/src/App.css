@@ -127,9 +127,21 @@ nav ul li a:visited {
   margin-bottom: 0.5rem;
 }
 
-#article-editor textarea {
+#article-editor textarea,
+#article-editor div#preview {
   font-size: 1rem;
   min-height: 500px;
   height: 75vh;
   width: 80vw;
+  overflow: scroll;
+  background: white;
+  border: 1px solid #999999;
+}
+
+#article-editor div#preview {
+  display: none;
+}
+
+label#title {
+  display: inline-block;
 }
