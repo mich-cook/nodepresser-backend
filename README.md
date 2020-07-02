@@ -1,24 +1,10 @@
-# fallen-tree blogging software
+# nodepresser blogging software
 
-Replaces old paper (made via fallen trees) news distribution.
+Expanded from a tutorial project that just navigated to a few blog entries for a single user that were stored in a local file.
 
-Originally a demo tutorial project (lynda / linkedin learning, I think) that just had a few blog pages for a single user.
+This work will expand it to a multi-tenant blogging platform (like many others that I didn't write). I've also hooked it up to a functional data store (mongodb) instead of a flat demo file that was only readable. Driving towards getting this fully functional as a demo.
 
-This work will expand it to a multi-tenant blogging platform (like many others that I didn't write). I've also hooked it up to a functional data store (mongodb) instead of a flat demo file that was only readable if I recall correctly.
-
-## Frontend Access:
-### Current:
-    /
-    /about
-    /articles/<author>
-    /article/<author>/<slug>
-### Planned:
-    /articles/recent
-    /articles/popular
-    /article/editor
-
-## Backend APIs:
-### Read APIs:
+## Read APIs:
     GET /api/articles/<author>
 
 Returns articles by author. Currently no limit, specific sort order, and currently not filtering deleted articles.
@@ -27,7 +13,7 @@ Returns articles by author. Currently no limit, specific sort order, and current
 Returns article with slug written by specified author. Slugs must be unique per author.  
 Design requirement: multiple authors can have the same slug (like hello-world).
 
-### Author APIs (All require authentication (TODO)):
+## Author APIs (All require authentication (TODO)):
     POST  /api/articles
 Creates an article for an author.
 
@@ -38,7 +24,7 @@ Update an article.
 Mark article as deleted. Cannot be reverted by author.
 Author still will be able to see article in editor, but other users cannot see it.
 
-### User APIs (All require authentication (TODO)):
+## User APIs (All require authentication (TODO)):
     POST /api/article/<id>/upvote
 Add vote to article
 
